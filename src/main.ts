@@ -18,12 +18,14 @@ async function bootstrap(): Promise<void> {
     }),
   );
 
-  // Swagger/OpenAPI documentation
+  // Swagger/OpenAPI documentation (ปรับแต่งให้เข้ากับ Model Set 3 ของเรา)
   const config = new DocumentBuilder()
-    .setTitle('NestJS Backend API')
-    .setDescription('API Documentation for NestJS Backend Project')
+    .setTitle('Event Management System API')
+    .setDescription('เอกสาร API สำหรับโปรเจกต์ OOP Final - ระบบจัดการกิจกรรม (Model Set 3)')
     .setVersion('1.0')
-    .addTag('api')
+    .addTag('Events', 'ระบบจัดการกิจกรรม (Admin)')
+    .addTag('Auth & Participants', 'ระบบสมัครสมาชิกและจัดการผู้ใช้ (Participant)')
+    .addTag('Reservations', 'ระบบการจองและยกเลิกกิจกรรม')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

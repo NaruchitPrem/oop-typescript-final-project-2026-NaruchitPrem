@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "userId": "d98723bd-d8de-45e8-9c60-ff58978fa629",
+    "username": "johndoe",
+    "password": "password123",
+    "email": "john@example.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "phoneNumber": "0812345678",
+    "role": "PARTICIPANT"
+  }
+]
