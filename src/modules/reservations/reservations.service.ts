@@ -45,7 +45,7 @@ export class ReservationsService {
       userId: createDto.userId,
       eventId: createDto.eventId,
       reservationDate: new Date(),
-      status: ReservationStatus.CONFIRMED, // ให้สถานะยืนยันเลยเมื่อจองสำเร็จ
+      status: ReservationStatus.CONFIRMED,
     };
 
     reservations.push(newReservation);
