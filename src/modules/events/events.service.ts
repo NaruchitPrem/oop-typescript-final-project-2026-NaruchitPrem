@@ -86,4 +86,14 @@ export class EventsService {
     events.splice(eventIndex, 1);
     this.db.write(events);
   }
+
+  updateBookingCount(eventId: string, increment: number): void {
+    const events = this.db.read();
+    const eventIndex = events.findIndex(e => e.eventId === eventId);
+    
+    if (eventIndex > -1) {
+      events[eventIndex].currentBookings += increment;
+      this.db.write(events);
+    }
+  }
 }
