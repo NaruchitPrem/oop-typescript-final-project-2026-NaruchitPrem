@@ -241,9 +241,3 @@ interface ApiResponse<T> {
 ---
 
 📌 *This repository is intended for educational purposes only.*
-
-<<<<<<< HEAD
-testq
-=======
-test kub
->>>>>>> a8eee19 (testaipon)
