@@ -8,5 +8,15 @@
     "lastName": "Doe",
     "phoneNumber": "0812345678",
     "role": "PARTICIPANT"
+  },
+  {
+    "userId": "46a009d9-03e1-4022-94bc-3d68b2e6fba9",
+    "username": "NaruchitPrem",
+    "password": "00oo1234",
+    "email": "naruchitprem@gmail.com",
+    "firstName": "Naruchit",
+    "lastName": "Choenghom",
+    "phoneNumber": "0638040698",
+    "role": "PARTICIPANT"
   }
 ]
