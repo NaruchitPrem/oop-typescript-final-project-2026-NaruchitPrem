@@ -1,14 +1,22 @@
 [
   {
-    "userId": "77258309-ef49-4322-b357-523f0fb3b2de",
-    "username": "slowpoke_497",
-    "password": "pass123",
-    "email": "slow_646@test.com",
-    "firstName": "Slow",
-    "lastName": "Poke",
-    "phoneNumber": "0888888888",
-    "role": "PARTICIPANT",
-    "isActive": true,
-    "createdAt": "2026-02-23T06:45:12.654Z"
+    "userId": "d98723bd-d8de-45e8-9c60-ff58978fa629",
+    "username": "johndoe",
+    "password": "password123",
+    "email": "john@example.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "phoneNumber": "0812345678",
+    "role": "PARTICIPANT"
+  },
+  {
+    "userId": "46a009d9-03e1-4022-94bc-3d68b2e6fba9",
+    "username": "NaruchitPrem",
+    "password": "00oo1234",
+    "email": "naruchitprem@gmail.com",
+    "firstName": "Naruchit",
+    "lastName": "Choenghom",
+    "phoneNumber": "0638040698",
+    "role": "PARTICIPANT"
   }
 ]

@@ -22,6 +22,7 @@ async function bootstrap(): Promise<void> {
     .setTitle('Event Management System')
     .setDescription('OOP Final Project - ระบบจัดการกิจกรรม (Model Set 3)')
     .addTag('Events', 'ระบบจัดการกิจกรรม (Admin)')
+    .addTag('Participants Management', 'ดูข้อมูลผู้ใช้งานทั้งหมด (Admin)')
     .addTag('Auth & Participants', 'ระบบสมัครสมาชิกและจัดการผู้ใช้ (Participant)')
     .addTag('Reservations', 'ระบบการจองและยกเลิกกิจกรรม')
     .build();
