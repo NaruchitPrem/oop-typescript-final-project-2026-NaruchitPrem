@@ -20,12 +20,12 @@ import { Participant } from '../../common/interfaces/participant.interface';
 // Type alias สำหรับ Participant without password
 type ParticipantResponse = Omit<Participant, 'password'>;
 
-@ApiTags('Auth & Participants')
 @Controller() // ไม่ใส่ Prefix รวม เพราะเราจะแยก Route ด้านใน
 export class ParticipantsController {
   constructor(private readonly participantsService: ParticipantsService) {}
 
   // ---- Auth Routes ----
+  @ApiTags('Auth & Participants')
   @Post('auth/register')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'สมัครสมาชิกใหม่' })
@@ -38,6 +38,7 @@ export class ParticipantsController {
     };
   }
 
+  @ApiTags('Auth & Participants')
   @Post('auth/login')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'เข้าสู่ระบบ' })
@@ -51,6 +52,7 @@ export class ParticipantsController {
   }
 
   // ---- Participant Routes ----
+  @ApiTags('Participants Management')
   @Get('participants')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'ดึงข้อมูลผู้ใช้งานทั้งหมด' })
@@ -63,6 +65,7 @@ export class ParticipantsController {
     };
   }
 
+  @ApiTags('Participants Management')
   @Get('participants/:id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'ดึงข้อมูลผู้ใช้งานตาม ID' })
@@ -75,6 +78,7 @@ export class ParticipantsController {
     };
   }
 
+  @ApiTags('Auth & Participants')
   @Patch('participants/:id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'แก้ไขข้อมูลโปรไฟล์ผู้ใช้งาน' })
@@ -90,6 +94,7 @@ export class ParticipantsController {
     };
   }
 
+  @ApiTags('Auth & Participants')
   @Delete('participants/:id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'ลบผู้ใช้งาน' })
