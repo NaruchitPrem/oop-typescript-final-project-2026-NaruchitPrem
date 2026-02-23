@@ -1,16 +1,1 @@
-[
-  {
-    "reservationId": "f078f751-1a66-4fca-8c6e-2864fe6dacd8",
-    "userId": "b3c5fffa-f727-494f-ad18-004a58e638f9",
-    "eventId": "90f86d28-43f5-404b-a00b-7c3e5cae6c2f",
-    "reservationDate": "2026-02-23T06:45:12.629Z",
-    "status": "CANCELLED"
-  },
-  {
-    "reservationId": "baf0b155-583b-4798-947e-6533d9177b05",
-    "userId": "77258309-ef49-4322-b357-523f0fb3b2de",
-    "eventId": "90f86d28-43f5-404b-a00b-7c3e5cae6c2f",
-    "reservationDate": "2026-02-23T06:45:12.706Z",
-    "status": "CONFIRMED"
-  }
-]
+[]
