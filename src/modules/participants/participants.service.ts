@@ -32,6 +32,7 @@ export class ParticipantsService {
       throw new ConflictException('Username หรือ Email นี้มีผู้ใช้งานแล้ว'); // โยน 409 Conflict
     }
 
+    const now = new Date();
     const newParticipant: Participant = {
       userId: randomUUID(),
       username: registerDto.username,
@@ -41,6 +42,8 @@ export class ParticipantsService {
       lastName: registerDto.lastName,
       phoneNumber: registerDto.phoneNumber,
       role: Role.PARTICIPANT, // กำหนด Role อัตโนมัติ
+      isActive: true, // กำหนดค่าเริ่มต้นเป็น true
+      createdAt: now,
     };
 
     participants.push(newParticipant);
