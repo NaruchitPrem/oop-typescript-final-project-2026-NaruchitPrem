@@ -58,6 +58,7 @@ http://localhost:3000/api
 │   ├── api-specification.md
 │   ├── data-model.md
 │   └── uml-diagram.png
+|
 ├── src/
 │   ├── main.ts
 │   ├── app.module.ts
@@ -89,5 +90,6 @@ http://localhost:3000/api
 * 🔌 [API Specification](./docs/api-specification.md) - รายละเอียดของ Endpoint ทั้งหมด
 * 🧱 [Data Model Documentation](./docs/data-model.md) - คำอธิบายและโครงสร้างของฐานข้อมูล
 * 📊 [UML Diagram](./docs/uml-diagram.png) - แผนภาพความสัมพันธ์ของระบบ
+
 
 ---
