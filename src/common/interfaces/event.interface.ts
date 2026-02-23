@@ -10,4 +10,6 @@ export interface Event {
   capacity: number;
   currentBookings: number;
   status: EventStatus;
+  createdAt: Date;
+  updatedAt: Date;
 }
