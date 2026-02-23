@@ -15,6 +15,10 @@ import { LoginDto } from './dto/login.dto';
 import { UpdateParticipantDto } from './dto/update-participant.dto';
 import { ApiResponse } from '../../common/interfaces/api-response.interface';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { Participant } from '../../common/interfaces/participant.interface';
+
+// Type alias สำหรับ Participant without password
+type ParticipantResponse = Omit<Participant, 'password'>;
 
 @ApiTags('Auth & Participants')
 @Controller() // ไม่ใส่ Prefix รวม เพราะเราจะแยก Route ด้านใน
@@ -25,7 +29,7 @@ export class ParticipantsController {
   @Post('auth/register')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'สมัครสมาชิกใหม่' })
-  register(@Body() registerDto: RegisterDto): ApiResponse<unknown> {
+  register(@Body() registerDto: RegisterDto): ApiResponse<ParticipantResponse> {
     const result = this.participantsService.register(registerDto);
     return {
       success: true,
@@ -37,7 +41,7 @@ export class ParticipantsController {
   @Post('auth/login')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'เข้าสู่ระบบ' })
-  login(@Body() loginDto: LoginDto): ApiResponse<unknown> {
+  login(@Body() loginDto: LoginDto): ApiResponse<ParticipantResponse> {
     const result = this.participantsService.login(loginDto);
     return {
       success: true,
@@ -50,7 +54,7 @@ export class ParticipantsController {
   @Get('participants')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'ดึงข้อมูลผู้ใช้งานทั้งหมด' })
-  findAll(): ApiResponse<unknown[]> {
+  findAll(): ApiResponse<ParticipantResponse[]> {
     const result = this.participantsService.findAll();
     return {
       success: true,
@@ -62,7 +66,7 @@ export class ParticipantsController {
   @Get('participants/:id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'ดึงข้อมูลผู้ใช้งานตาม ID' })
-  findOne(@Param('id') id: string): ApiResponse<unknown> {
+  findOne(@Param('id') id: string): ApiResponse<ParticipantResponse> {
     const result = this.participantsService.findOne(id);
     return {
       success: true,
@@ -77,7 +81,7 @@ export class ParticipantsController {
   update(
     @Param('id') id: string,
     @Body() updateDto: UpdateParticipantDto,
-  ): ApiResponse<unknown> {
+  ): ApiResponse<ParticipantResponse> {
     const result = this.participantsService.update(id, updateDto);
     return {
       success: true,

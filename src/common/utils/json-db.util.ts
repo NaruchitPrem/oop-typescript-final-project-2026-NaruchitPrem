@@ -23,8 +23,17 @@ export class JsonDB<T> {
 
   // ดึงข้อมูลทั้งหมด
   read(): T[] {
-    const data = fs.readFileSync(this.filePath, 'utf-8');
-    return JSON.parse(data) as T[]; // แคสต์ไทป์เป็น <T> ทันที เพื่อเลี่ยง any
+    try {
+      const data = fs.readFileSync(this.filePath, 'utf-8');
+      // ถ้าไฟล์ว่างหรือมีแค่ whitespace ให้ return array ว่าง
+      if (!data.trim()) {
+        return [];
+      }
+      return JSON.parse(data) as T[]; // แคสต์ไทป์เป็น <T> ทันที เพื่อเลี่ยง any
+    } catch (error) {
+      // ถ้า JSON parse error หรือไฟล์เสียหาย ให้ return array ว่างแทนที่จะ throw error
+      return [];
+    }
   }
 
   // บันทึกข้อมูลทับลงไป

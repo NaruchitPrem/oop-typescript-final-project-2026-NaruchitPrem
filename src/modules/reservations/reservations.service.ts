@@ -24,20 +24,20 @@ export class ReservationsService {
 
     // 2. เช็คว่ามี Event นี้จริงไหม
     const event = this.eventsService.findOne(createDto.eventId);
-
+    
+    const reservations = this.db.read();
+    const alreadyBooked = reservations.some(
+      (r) => r.userId === createDto.userId && r.eventId === createDto.eventId && r.status !== ReservationStatus.CANCELLED
+    );
+    // 4. เช็คว่า User คนนี้จอง Event นี้ไปหรือยัง (ห้ามจองซ้ำ)
+    if (alreadyBooked) {
+      throw new BadRequestException('ผู้ใช้งานได้ทำการจองกิจกรรมนี้ไปแล้ว');
+    }
     // 3. เช็คที่นั่งว่าเต็มหรือยัง (Logic ป้องกัน 500 Error ตาม Requirement)
     if (event.currentBookings >= event.capacity) {
       throw new BadRequestException('ไม่สามารถจองได้ เนื่องจากกิจกรรมนี้ที่นั่งเต็มแล้ว');
     }
 
-    // 4. เช็คว่า User คนนี้จอง Event นี้ไปหรือยัง (ห้ามจองซ้ำ)
-    const reservations = this.db.read();
-    const alreadyBooked = reservations.some(
-      (r) => r.userId === createDto.userId && r.eventId === createDto.eventId && r.status !== ReservationStatus.CANCELLED
-    );
-    if (alreadyBooked) {
-      throw new BadRequestException('ผู้ใช้งานได้ทำการจองกิจกรรมนี้ไปแล้ว');
-    }
 
     // 5. สร้างการจองใหม่
     const newReservation: Reservation = {
