@@ -17,14 +17,12 @@ import { ApiResponse } from '../../common/interfaces/api-response.interface';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { Participant } from '../../common/interfaces/participant.interface';
 
-// Type alias สำหรับ Participant without password
 type ParticipantResponse = Omit<Participant, 'password'>;
 
-@Controller() // ไม่ใส่ Prefix รวม เพราะเราจะแยก Route ด้านใน
+@Controller()
 export class ParticipantsController {
   constructor(private readonly participantsService: ParticipantsService) {}
 
-  // ---- Auth Routes ----
   @ApiTags('Auth & Participants')
   @Post('auth/register')
   @HttpCode(HttpStatus.CREATED)
@@ -51,7 +49,6 @@ export class ParticipantsController {
     };
   }
 
-  // ---- Participant Routes ----
   @ApiTags('Participants Management')
   @Get('participants')
   @HttpCode(HttpStatus.OK)

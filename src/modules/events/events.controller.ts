@@ -12,7 +12,7 @@ export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
   @Post()
-  @HttpCode(HttpStatus.CREATED) // คืนค่า 201 ตาม Requirement
+  @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'สร้างกิจกรรมใหม่ (Admin)' })
   create(@Body() createEventDto: CreateEventDto): ApiResponse<Event> {
     const result = this.eventsService.create(createEventDto);
@@ -24,7 +24,7 @@ export class EventsController {
   }
 
   @Get()
-  @HttpCode(HttpStatus.OK) // คืนค่า 200 ตาม Requirement
+  @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'ดึงข้อมูลกิจกรรมทั้งหมด' })
   findAll(): ApiResponse<Event[]> {
     const result = this.eventsService.findAll();

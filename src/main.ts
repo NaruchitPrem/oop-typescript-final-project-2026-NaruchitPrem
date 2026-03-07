@@ -8,7 +8,6 @@ async function bootstrap(): Promise<void> {
 
   app.enableCors();
 
-  // Global validation pipe
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -17,7 +16,6 @@ async function bootstrap(): Promise<void> {
     }),
   );
 
-  // Swagger/OpenAPI documentation (ปรับแต่งให้เข้ากับ Model Set 3 ของเรา)
   const config = new DocumentBuilder()
     .setTitle('Event Management System')
     .setDescription('OOP Final Project - ระบบจัดการกิจกรรม (Model Set 3)')

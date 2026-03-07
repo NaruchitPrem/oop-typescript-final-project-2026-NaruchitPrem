@@ -16,7 +16,6 @@ export class EventsService {
   create(createEventDto: CreateEventDto): Event {
     const events = this.db.read();
     
-    // Validate เช็คเวลาเริ่มต้องก่อนเวลาจบ (ป้องกัน Error 500 ตาม Requirement)
     if (new Date(createEventDto.startTime) >= new Date(createEventDto.endTime)) {
       throw new BadRequestException('เวลาเริ่มต้นต้องอยู่ก่อนเวลาสิ้นสุด');
     }
@@ -65,7 +64,6 @@ export class EventsService {
       throw new NotFoundException(`ไม่พบกิจกรรมรหัส ${id}`);
     }
 
-    // 1. สร้าง Object ข้อมูลใหม่ที่ผสมระหว่างของเดิมกับของที่ส่งมาอัปเดต
     const updatedEvent: Event = {
       ...events[eventIndex],
       ...updateEventDto,
@@ -74,14 +72,10 @@ export class EventsService {
       updatedAt: new Date(), 
     };
 
-    // ---------------------------------------------------------
-    // 📍 เพิ่มโค้ดตรวจสอบตรงนี้ครับ (ก่อนเซฟลงไฟล์)
-    // ---------------------------------------------------------
     if (new Date(updatedEvent.startTime) >= new Date(updatedEvent.endTime)) {
       throw new BadRequestException('เวลาเริ่มต้นต้องอยู่ก่อนเวลาสิ้นสุด');
     }
 
-    // 2. บันทึกข้อมูลทับลงไป
     events[eventIndex] = updatedEvent;
     this.db.write(events);
 
@@ -105,9 +99,8 @@ export class EventsService {
     const eventIndex = events.findIndex(e => e.eventId === eventId);
     
     if (eventIndex > -1) {
-      // ป้องกันไม่ให้ currentBookings ติดลบ
       if (events[eventIndex].currentBookings + increment < 0) {
-        return; // ไม่ทำการอัปเดตถ้าจะทำให้ค่าติดลบ
+        return;
       }
       events[eventIndex].currentBookings += increment;
       this.db.write(events);

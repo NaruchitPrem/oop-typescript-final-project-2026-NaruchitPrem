@@ -39,7 +39,7 @@ export class ReservationsController {
   @ApiOperation({ summary: 'ยกเลิกการจองกิจกรรม (Participant)' })
   cancel(
     @Param('id') id: string,
-    @Body('userId') userId: string // รับ userId มาเพื่อยืนยันว่าเป็นเจ้าของการจองจริงๆ
+    @Body('userId') userId: string
   ): ApiResponse<Reservation> {
     const result = this.reservationsService.cancel(id, userId);
     return {
