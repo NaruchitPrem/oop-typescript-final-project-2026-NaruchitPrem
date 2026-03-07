@@ -4,7 +4,7 @@ export interface Event {
   eventId: string;
   name: string;
   description: string;
-  startTime: Date; // เวลาเก็บลง JSON จะกลายเป็น ISO String
+  startTime: Date;
   endTime: Date;
   location: string;
   capacity: number;

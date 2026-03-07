@@ -5,7 +5,7 @@ import { EventsModule } from '../events/events.module';
 import { ParticipantsModule } from '../participants/participants.module';
 
 @Module({
-  imports: [EventsModule, ParticipantsModule], // ดึง Module อื่นมาเชื่อมต่อ
+  imports: [EventsModule, ParticipantsModule],
   controllers: [ReservationsController],
   providers: [ReservationsService],
 })

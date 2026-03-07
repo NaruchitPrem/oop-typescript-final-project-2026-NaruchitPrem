@@ -23,33 +23,31 @@ export class ParticipantsService {
   register(registerDto: RegisterDto): Omit<Participant, 'password'> {
     const participants = this.db.read();
 
-    // เช็คว่า Username หรือ Email ซ้ำหรือไม่
     const isDuplicate = participants.some(
       (p) =>
         p.username === registerDto.username || p.email === registerDto.email,
     );
     if (isDuplicate) {
-      throw new ConflictException('Username หรือ Email นี้มีผู้ใช้งานแล้ว'); // โยน 409 Conflict
+      throw new ConflictException('Username หรือ Email นี้มีผู้ใช้งานแล้ว');
     }
 
     const now = new Date();
     const newParticipant: Participant = {
       userId: randomUUID(),
       username: registerDto.username,
-      password: registerDto.password, // ของจริงต้อง Hash (เช่น bcrypt) ก่อนเซฟนะครับ
+      password: registerDto.password,
       email: registerDto.email,
       firstName: registerDto.firstName,
       lastName: registerDto.lastName,
       phoneNumber: registerDto.phoneNumber,
-      role: Role.PARTICIPANT, // กำหนด Role อัตโนมัติ
-      isActive: true, // กำหนดค่าเริ่มต้นเป็น true
+      role: Role.PARTICIPANT,
+      isActive: true,
       createdAt: now,
     };
 
     participants.push(newParticipant);
     this.db.write(participants);
 
-    // คืนค่าข้อมูลกลับไปโดยตัดรหัสผ่านทิ้งเพื่อความปลอดภัย
     const { password, ...result } = newParticipant;
     return result;
   }
@@ -57,18 +55,17 @@ export class ParticipantsService {
   login(loginDto: LoginDto): Omit<Participant, 'password'> {
     const participants = this.db.read();
 
-    // หา User ที่ Username และ Password ตรงกัน
     const user = participants.find(
       (p) =>
         p.username === loginDto.username && p.password === loginDto.password,
     );
 
     if (!user) {
-      throw new UnauthorizedException('Username หรือ Password ไม่ถูกต้อง'); // โยน 401 Unauthorized
+      throw new UnauthorizedException('Username หรือ Password ไม่ถูกต้อง');
     }
 
     const { password, ...result } = user;
-    return result; // สมมติว่าคืนเป็นข้อมูล User แทน JWT Token ในโปรเจกต์นี้
+    return result;
   }
 
   findAll(): Omit<Participant, 'password'>[] {

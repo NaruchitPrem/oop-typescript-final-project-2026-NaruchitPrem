@@ -5,6 +5,6 @@ import { ParticipantsController } from './participants.controller';
 @Module({
   controllers: [ParticipantsController],
   providers: [ParticipantsService],
-  exports: [ParticipantsService], // เผื่อให้ Module อื่นเรียกใช้
+  exports: [ParticipantsService],
 })
 export class ParticipantsModule {}
