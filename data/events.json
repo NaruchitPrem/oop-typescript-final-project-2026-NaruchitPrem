@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "eventId": "d77d46c6-7082-415c-b8d4-73415636df71",
+    "name": "NestJS Workshop",
+    "description": "เรียนรู้การสร้าง API ด้วย NestJS",
+    "startTime": "2026-03-01T09:00:00.000Z",
+    "endTime": "2026-03-01T16:00:00.000Z",
+    "location": "Bangkok, Thailand",
+    "capacity": 60,
+    "currentBookings": 0,
+    "status": "UPCOMING",
+    "createdAt": "2026-03-13T07:40:01.118Z",
+    "updatedAt": "2026-03-13T12:37:16.866Z"
+  }
+]

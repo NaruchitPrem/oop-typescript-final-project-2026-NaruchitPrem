@@ -41,7 +41,7 @@ export class ReservationsController {
     @Param('id') id: string,
     @Body('userId') userId: string
   ): ApiResponse<Reservation> {
-    const result = this.reservationsService.cancel(id, userId);
+    const result = this.reservationsService.cancel(id);
     return {
       success: true,
       message: 'ยกเลิกการจองสำเร็จ',

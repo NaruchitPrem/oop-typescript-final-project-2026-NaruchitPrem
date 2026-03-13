@@ -56,9 +56,9 @@ export class ReservationsService {
     return reservations.filter(r => r.userId === userId);
   }
 
-  cancel(reservationId: string, userId: string): Reservation {
+  cancel(reservationId: string): Reservation {
     const reservations = this.db.read();
-    const resIndex = reservations.findIndex(r => r.reservationId === reservationId && r.userId === userId);
+    const resIndex = reservations.findIndex(r => r.reservationId === reservationId);
 
     if (resIndex === -1) {
       throw new NotFoundException(`ไม่พบประวัติการจองรหัส ${reservationId} ของผู้ใช้นี้`);
