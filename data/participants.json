@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "userId": "67cd8ced-39f3-4d3f-a3be-3d4d14440155",
+    "username": "johndoe",
+    "password": "password123",
+    "email": "john@example.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "phoneNumber": "0812345111",
+    "role": "PARTICIPANT",
+    "isActive": true,
+    "createdAt": "2026-03-13T08:50:40.163Z"
+  },
+  {
+    "userId": "0b34c455-36d5-4d0b-9c1b-8cb9b934f5dc",
+    "username": "Prem",
+    "password": "password123",
+    "email": "prem@example.com",
+    "firstName": "Prem",
+    "lastName": "Zan",
+    "phoneNumber": "0812333232",
+    "role": "PARTICIPANT",
+    "isActive": true,
+    "createdAt": "2026-03-13T08:51:19.477Z"
+  }
+]
